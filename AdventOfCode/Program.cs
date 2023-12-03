@@ -1,2 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using AdventOfCode._2023.Day1;
+
+Console.WriteLine(DocumentExtractor.GetSumOfCalibrationValues());
