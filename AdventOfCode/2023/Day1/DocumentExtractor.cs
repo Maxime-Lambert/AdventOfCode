@@ -1,24 +1,52 @@
-﻿using System.Buffers;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventOfCode._2023.Day1;
 
 public static class DocumentExtractor
 {
-    private static readonly SearchValues<char> _charDigits = SearchValues.Create(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
-    private static readonly string _inputFileName = "2023/Day1/input.txt";
+    public static readonly string patternPart1 = @"\d";
+    public static readonly string patternPart2 = @"\d|one|two|three|four|five|six|seven|eight|nine";
 
-    public static int GetCalibrationValue(string calibrationLine)
+    public static int GetCalibrationValue(string calibrationLine, string pattern)
     {
-        var calibrationLineAsSpan = calibrationLine.AsSpan();
+        var firstDigit = StringDigitToInt(Regex.Match(calibrationLine, pattern).Value);
+        var lastDigit = StringDigitToInt(Regex.Match(calibrationLine, pattern, RegexOptions.RightToLeft).Value);
 
-        var firstDigit = calibrationLineAsSpan[calibrationLineAsSpan.IndexOfAny(_charDigits)];
-        var lastDigit = calibrationLineAsSpan[calibrationLineAsSpan.LastIndexOfAny(_charDigits)];
-
-        return (int)((char.GetNumericValue(firstDigit) * 10) + char.GetNumericValue(lastDigit));
+        return (firstDigit * 10) + lastDigit;
     }
 
-    public static int GetSumOfCalibrationValues()
+    public static int GetSumOfCalibrationValues(string filePath, Part part)
     {
-        return File.ReadAllLines(Path.GetFullPath(_inputFileName)).Sum(GetCalibrationValue);
+        return part switch
+        {
+            Part.One => File.ReadAllLines(Path.GetFullPath(filePath)).Sum(calibrationLine => GetCalibrationValue(calibrationLine, patternPart1)),
+            Part.Two => File.ReadAllLines(Path.GetFullPath(filePath)).Sum(calibrationLine => GetCalibrationValue(calibrationLine, patternPart2))
+        };
+    }
+
+    private static int StringDigitToInt(string s)
+    {
+        return s switch
+        {
+            "1" => 1,
+            "2" => 2,
+            "3" => 3,
+            "4" => 4,
+            "5" => 5,
+            "6" => 6,
+            "7" => 7,
+            "8" => 8,
+            "9" => 9,
+            "one" => 1,
+            "two" => 2,
+            "three" => 3,
+            "four" => 4,
+            "five" => 5,
+            "six" => 6,
+            "seven" => 7,
+            "eight" => 8,
+            "nine" => 9,
+            _ => 0
+        };
     }
 }
