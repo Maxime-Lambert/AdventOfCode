@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode", "AdventOfCode\AdventOfCode.csproj", "{A3DC9670-E483-4CBE-A79F-B4CADE293F7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCodeTests", "AdventOfCodeTests\AdventOfCodeTests.csproj", "{D377514E-6FB0-4618-B102-3AACC1F12A10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCodeTests", "AdventOfCodeTests\AdventOfCodeTests.csproj", "{D377514E-6FB0-4618-B102-3AACC1F12A10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{DAB1F375-1FDD-477A-BBD1-3CED810069F6}"
 	ProjectSection(SolutionItems) = preProject

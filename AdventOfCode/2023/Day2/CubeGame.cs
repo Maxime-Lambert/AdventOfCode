@@ -15,24 +15,27 @@ internal class CubeGame
 
     public int GetPowerOfValues()
     {
-        return BlueMinimumValue*RedMinimumValue*GreenMinimumValue;
+        return BlueMinimumValue * RedMinimumValue * GreenMinimumValue;
     }
 
     public void UpdateBlueMinimumValue(int blueValue)
     {
-        if(BlueMinimumValue < blueValue) {
+        if (BlueMinimumValue < blueValue)
+        {
             BlueMinimumValue = blueValue;
         }
     }
     public void UpdateRedMinimumValue(int redValue)
     {
-        if(RedMinimumValue < redValue) {
+        if (RedMinimumValue < redValue)
+        {
             RedMinimumValue = redValue;
         }
     }
     public void UpdateGreenMinimumValue(int greenValue)
     {
-        if(GreenMinimumValue < greenValue) {
+        if (GreenMinimumValue < greenValue)
+        {
             GreenMinimumValue = greenValue;
         }
     }

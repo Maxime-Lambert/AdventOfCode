@@ -69,7 +69,7 @@ public static class CubeGameSolver
     public static int SolvePart2Game(string gameValues)
     {
         CubeGame cubeGame = new CubeGame();
-        foreach(var drawValue in gameValues.Split(';'))
+        foreach (var drawValue in gameValues.Split(';'))
         {
             SolvePart2Draw(cubeGame, drawValue);
         }
