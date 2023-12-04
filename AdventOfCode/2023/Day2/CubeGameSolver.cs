@@ -10,10 +10,10 @@ public static class CubeGameSolver
     private static readonly string BLUE_TEXT = "blue";
     private static readonly string GREEN_TEXT = "green";
 
-    public static int SolveCubeGame(string filePath)
+    public static int SolvePart1CubeGame(string filePath)
     {
         return File.ReadAllLines(Path.GetFullPath(filePath))
-            .Where(gameInformations => SolveGame(GetGameValues(gameInformations)))
+            .Where(gameInformations => SolvePart1Game(GetGameValues(gameInformations)))
             .Sum(GetGameId);
     }
 
@@ -27,17 +27,17 @@ public static class CubeGameSolver
         return int.Parse(gameInformations.Split(':')[0].Split(' ', StringSplitOptions.RemoveEmptyEntries)[1]);
     }
 
-    public static bool SolveGame(string gameValues)
+    public static bool SolvePart1Game(string gameValues)
     {
-        return Array.TrueForAll(gameValues.Split(';'), SolveDraw);
+        return Array.TrueForAll(gameValues.Split(';'), SolvePart1Draw);
     }
 
-    private static bool SolveDraw(string drawValues)
+    private static bool SolvePart1Draw(string drawValues)
     {
-        return Array.TrueForAll(drawValues.Split(','), SolveColorCubeValue);
+        return Array.TrueForAll(drawValues.Split(','), SolvePart1ColorCubeValue);
     }
 
-    private static bool SolveColorCubeValue(string colorCubeValue)
+    private static bool SolvePart1ColorCubeValue(string colorCubeValue)
     {
         var cubeValue = GetNumberOfCubes(colorCubeValue);
         if (colorCubeValue.Contains(BLUE_TEXT))
@@ -58,5 +58,41 @@ public static class CubeGameSolver
     private static int GetNumberOfCubes(string cubeValue)
     {
         return int.Parse(cubeValue.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]);
+    }
+
+    public static int SolvePart2CubeGame(string filePath)
+    {
+        return File.ReadAllLines(Path.GetFullPath(filePath))
+            .Sum(gameInformations => SolvePart2Game(GetGameValues(gameInformations)));
+    }
+
+    public static int SolvePart2Game(string gameValues)
+    {
+        CubeGame cubeGame = new CubeGame();
+        foreach(var drawValue in gameValues.Split(';'))
+        {
+            SolvePart2Draw(cubeGame, drawValue);
+        }
+        return cubeGame.GetPowerOfValues();
+    }
+
+    private static void SolvePart2Draw(CubeGame cubeGame, string drawValue)
+    {
+        foreach (var colorCubeValue in drawValue.Split(','))
+        {
+            var cubeValue = GetNumberOfCubes(colorCubeValue);
+            if (colorCubeValue.Contains(BLUE_TEXT))
+            {
+                cubeGame.UpdateBlueMinimumValue(cubeValue);
+            }
+            if (colorCubeValue.Contains(RED_TEXT))
+            {
+                cubeGame.UpdateRedMinimumValue(cubeValue);
+            }
+            if (colorCubeValue.Contains(GREEN_TEXT))
+            {
+                cubeGame.UpdateGreenMinimumValue(cubeValue);
+            }
+        }
     }
 }
