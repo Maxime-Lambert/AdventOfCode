@@ -11,7 +11,7 @@ internal class PossiblePartNumber
     public PossiblePartNumber(string number, Point startingPosition)
     {
         Number = int.Parse(number);
-        PossibleSymbolValues = new List<Point>();
+        PossibleSymbolValues = [];
         for (int x = startingPosition.X - 1; x <= startingPosition.X + number.Length; x++)
         {
             PossibleSymbolValues.Add(new Point(x, startingPosition.Y - 1));
