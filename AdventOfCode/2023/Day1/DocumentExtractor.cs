@@ -15,13 +15,9 @@ public static class DocumentExtractor
         return (firstDigit * 10) + lastDigit;
     }
 
-    public static int GetSumOfCalibrationValues(string filePath, Part part)
+    public static int GetSumOfCalibrationValues(string filePath, string pattern)
     {
-        return part switch
-        {
-            Part.One => File.ReadAllLines(Path.GetFullPath(filePath)).Sum(calibrationLine => GetCalibrationValue(calibrationLine, patternPart1)),
-            Part.Two => File.ReadAllLines(Path.GetFullPath(filePath)).Sum(calibrationLine => GetCalibrationValue(calibrationLine, patternPart2))
-        };
+        return File.ReadAllLines(Path.GetFullPath(filePath)).Sum(calibrationLine => GetCalibrationValue(calibrationLine, pattern));
     }
 
     private static int StringDigitToInt(string s)
