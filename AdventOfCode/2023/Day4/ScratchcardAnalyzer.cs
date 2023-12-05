@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace AdventOfCode._2023.Day4;
+﻿namespace AdventOfCode._2023.Day4;
 
 public static class ScratchcardAnalyzer
 {
@@ -13,7 +11,7 @@ public static class ScratchcardAnalyzer
 
     public static int SolveScratchcardsPart2(string filePath)
     {
-        foreach(var card in File.ReadAllLines(Path.GetFullPath(filePath)))
+        foreach (var card in File.ReadAllLines(Path.GetFullPath(filePath)))
         {
             _cardCopies.Add(card, 1);
         }
@@ -27,7 +25,7 @@ public static class ScratchcardAnalyzer
     public static void SolveScratchcardPart2(string card, int copies)
     {
         var numberOfWinningNumbers = GetNumberOfWinningNumbers(GetScratchcardInformations(card));
-        if(numberOfWinningNumbers > 0)
+        if (numberOfWinningNumbers > 0)
         {
             var gameNumber = GetGameNumber(card);
             foreach (var key in _cardCopies.Keys.Where(card => GetGameNumber(card) <= gameNumber + numberOfWinningNumbers && GetGameNumber(card) > gameNumber))

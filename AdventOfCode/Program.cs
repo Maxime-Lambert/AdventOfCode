@@ -2,6 +2,7 @@
 using AdventOfCode._2023.Day2;
 using AdventOfCode._2023.Day3;
 using AdventOfCode._2023.Day4;
+using AdventOfCode._2023.Day5;
 
 Console.WriteLine("Advent of Code - Day 1");
 Console.WriteLine("Part 1 sum of calibration values : " + DocumentExtractor.GetSumOfCalibrationValues("2023/Day1/input.txt", DocumentExtractor.patternPart1));
@@ -18,3 +19,6 @@ Console.WriteLine("Part 2 sum of valid gears : " + EngineChecker.SolveEngineGame
 Console.WriteLine("Advent of Code - Day 4");
 Console.WriteLine("Part 1 sum of scratchcards points : " + ScratchcardAnalyzer.SolveScratchcardsPart1("2023/Day4/input.txt"));
 Console.WriteLine("Part 2 sum of scratchcards copies : " + ScratchcardAnalyzer.SolveScratchcardsPart2("2023/Day4/input.txt"));
+
+Console.WriteLine("Advent of Code - Day 5");
+Console.WriteLine("Part 1 lowest seed location : " + SeedLocationFinder.SolveSeedLocationPart1("2023/Day5/input.txt"));
