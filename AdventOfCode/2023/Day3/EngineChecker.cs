@@ -20,7 +20,7 @@ public static class EngineChecker
         var engineNumberList = new List<EngineNumber>();
         var possibleGearList = new List<PossibleGear>();
         StringBuilder stringBuilder = new StringBuilder();
-        var boundPoint = new Point(engineSchematic[0].Length-1, engineSchematic.Length-1);
+        var boundPoint = new Point(engineSchematic[0].Length - 1, engineSchematic.Length - 1);
         for (int y = 0; y < engineSchematic.Length; y++)
         {
             for (int x = 0; x < engineSchematic[y].Length; x++)
