@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AdventOfCode._2023.Day6;
+﻿using AdventOfCode._2023.Day6;
 
 namespace AdventOfCodeTests._2023.Day6;
 public class UnitTestsBoatRace
@@ -48,5 +43,19 @@ public class UnitTestsBoatRace
 
         //Assert
         result.Should().Be(9);
+    }
+
+    [Fact]
+    public static void BoatRace_Part2_Race_Should_Be_71503()
+    {
+        //Arrange
+        const int time = 71530;
+        const int distance = 940200;
+
+        //Act
+        var result = BoatRace.NumberOfWinningWays(time, distance);
+
+        //Assert
+        result.Should().Be(71503);
     }
 }

@@ -54,7 +54,7 @@ public static class SeedLocationFinder
         var seedList = new List<string>();
         for (int i = 0; i < seedInformations.Count; i++)
         {
-            if(i%2 == 0)
+            if (i % 2 == 0)
             {
                 seedList.Add(seedInformations[i]);
             }

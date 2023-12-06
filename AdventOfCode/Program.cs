@@ -26,4 +26,5 @@ Console.WriteLine("Part 1 lowest seed location : " + SeedLocationFinder.SolveSee
 //Console.WriteLine("Part 2 lowest seed location : " + SeedLocationFinder.SolveSeedLocationPart2("2023/Day5/input.txt"));
 
 Console.WriteLine("Advent of Code - Day 6");
-Console.WriteLine("Part 1 product of winning ways number : " + BoatRace.SolveBoatRacePart1("2023/Day6/input.txt"));
+Console.WriteLine("Part 1 product of numbers of winning ways : " + BoatRace.SolveBoatRacePart1("2023/Day6/input.txt"));
+Console.WriteLine("Part 2 number of winning ways : " + BoatRace.SolveBoatRacePart2("2023/Day6/input.txt"));
