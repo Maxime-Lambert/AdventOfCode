@@ -22,3 +22,4 @@ Console.WriteLine("Part 2 sum of scratchcards copies : " + ScratchcardAnalyzer.S
 
 Console.WriteLine("Advent of Code - Day 5");
 Console.WriteLine("Part 1 lowest seed location : " + SeedLocationFinder.SolveSeedLocationPart1("2023/Day5/input.txt"));
+Console.WriteLine("Part 2 lowest seed location : " + SeedLocationFinder.SolveSeedLocationPart2("2023/Day5/input.txt"));
