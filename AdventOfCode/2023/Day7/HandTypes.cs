@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode._2023.Day7;
 
-internal enum HandTypes
+public enum HandTypes
 {
     HighCard,
     OnePair,

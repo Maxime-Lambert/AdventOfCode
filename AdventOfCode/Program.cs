@@ -30,5 +30,6 @@ Console.WriteLine("Advent of Code - Day 6");
 Console.WriteLine("Part 1 product of numbers of winning ways : " + BoatRace.SolveBoatRacePart1("2023/Day6/input.txt"));
 Console.WriteLine("Part 2 number of winning ways : " + BoatRace.SolveBoatRacePart2("2023/Day6/input.txt"));
 
-Console.WriteLine("Advent of Code - Day 6");
+Console.WriteLine("Advent of Code - Day 7");
 Console.WriteLine("Part 1 sum of winnings : " + CamelCards.SolveCamelCardsPart1("2023/Day7/input.txt"));
+Console.WriteLine("Part 2 sum of winnings : " + CamelCards.SolveCamelCardsPart2("2023/Day7/input.txt"));
