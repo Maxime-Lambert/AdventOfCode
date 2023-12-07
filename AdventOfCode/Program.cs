@@ -4,6 +4,7 @@ using AdventOfCode._2023.Day3;
 using AdventOfCode._2023.Day4;
 using AdventOfCode._2023.Day5;
 using AdventOfCode._2023.Day6;
+using AdventOfCode._2023.Day7;
 
 Console.WriteLine("Advent of Code - Day 1");
 Console.WriteLine("Part 1 sum of calibration values : " + DocumentExtractor.GetSumOfCalibrationValues("2023/Day1/input.txt", DocumentExtractor.patternPart1));
@@ -28,3 +29,6 @@ Console.WriteLine("Part 1 lowest seed location : " + SeedLocationFinder.SolveSee
 Console.WriteLine("Advent of Code - Day 6");
 Console.WriteLine("Part 1 product of numbers of winning ways : " + BoatRace.SolveBoatRacePart1("2023/Day6/input.txt"));
 Console.WriteLine("Part 2 number of winning ways : " + BoatRace.SolveBoatRacePart2("2023/Day6/input.txt"));
+
+Console.WriteLine("Advent of Code - Day 6");
+Console.WriteLine("Part 1 sum of winnings : " + CamelCards.SolveCamelCardsPart1("2023/Day7/input.txt"));
