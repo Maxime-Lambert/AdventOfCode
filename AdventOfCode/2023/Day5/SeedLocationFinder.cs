@@ -5,14 +5,14 @@ namespace AdventOfCode._2023.Day5;
 
 public static class SeedLocationFinder
 {
-    private static readonly string patternDecimal = @"\d";
-    private static readonly List<longMap> _seedToSoil = [];
-    private static readonly List<longMap> _soilToFertilizer = [];
-    private static readonly List<longMap> _fertilizerToWater = [];
-    private static readonly List<longMap> _waterToLight = [];
-    private static readonly List<longMap> _lightToTemperature = [];
-    private static readonly List<longMap> _temperatureToHumidity = [];
-    private static readonly List<longMap> _humidityToLocation = [];
+    private static readonly string _patternDecimal = @"\d";
+    private static readonly List<LongMapWithRange> _seedToSoil = [];
+    private static readonly List<LongMapWithRange> _soilToFertilizer = [];
+    private static readonly List<LongMapWithRange> _fertilizerToWater = [];
+    private static readonly List<LongMapWithRange> _waterToLight = [];
+    private static readonly List<LongMapWithRange> _lightToTemperature = [];
+    private static readonly List<LongMapWithRange> _temperatureToHumidity = [];
+    private static readonly List<LongMapWithRange> _humidityToLocation = [];
 
     public static long SolveSeedLocationPart1(string filePath)
     {
@@ -51,14 +51,12 @@ public static class SeedLocationFinder
     public static long GetLowestLocationPart2(string[] almanac)
     {
         var seedInformations = almanac[0].Split(':')[1].Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
-        var seedList = new List<string>();
-        for (int i = 0; i < seedInformations.Count; i++)
+        var seedList = new List<SeedRange>();
+        for (int i = 0; i < seedInformations.Count; i+=2)
         {
-            if (i % 2 == 0)
-            {
-                seedList.Add(seedInformations[i]);
-            }
+            seedList.Add(new SeedRange(long.Parse(seedInformations[i]), long.Parse(seedInformations[i+1]), true));
         }
+
         var lineCounter = 3;
         lineCounter = ExtractNextMap(almanac, lineCounter, _seedToSoil);
         lineCounter = ExtractNextMap(almanac, lineCounter, _soilToFertilizer);
@@ -68,40 +66,47 @@ public static class SeedLocationFinder
         lineCounter = ExtractNextMap(almanac, lineCounter, _temperatureToHumidity);
         _ = ExtractNextMap(almanac, lineCounter, _humidityToLocation);
 
-        var lowestSeedsLocationsList = new ConcurrentBag<long>();
-
-        Parallel.ForEach(seedList, (seed) =>
+        var Maps = new List<List<LongMapWithRange>>
         {
-            var i = seedInformations.IndexOf(seed);
-            var lowestLocation = GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(long.Parse(seedInformations[0]), _seedToSoil), _soilToFertilizer), _fertilizerToWater), _waterToLight), _lightToTemperature), _temperatureToHumidity), _humidityToLocation);
-            var seedStart = long.Parse(seedInformations[i]);
-            var seedLimit = seedStart + long.Parse(seedInformations[i + 1]);
-            for (long seedValue = seedStart; seedValue < seedLimit; seedValue++)
+            _seedToSoil,
+            _soilToFertilizer,
+            _fertilizerToWater,
+            _waterToLight,
+            _lightToTemperature,
+            _temperatureToHumidity,
+            _humidityToLocation
+        };
+
+        Maps.ForEach(maps =>
+        {
+            foreach (var map in maps)
             {
-                var location = GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(GetNextMapValue(seedValue, _seedToSoil), _soilToFertilizer), _fertilizerToWater), _waterToLight), _lightToTemperature), _temperatureToHumidity), _humidityToLocation);
-                lowestLocation = long.Min(lowestLocation, location);
+                seedList = map.MapSeedRanges(seedList);
             }
-            lowestSeedsLocationsList.Add(lowestLocation);
+            foreach (var seedRange in seedList)
+            {
+                seedRange.ToMapNext = true;
+            }
         });
 
-        return lowestSeedsLocationsList.Min();
+        return seedList.Min(seedRange => seedRange.Seed);
     }
 
-    private static int ExtractNextMap(string[] almanac, int lineCounter, List<longMap> map)
+    private static int ExtractNextMap(string[] almanac, int lineCounter, List<LongMapWithRange> map)
     {
-        while (lineCounter < almanac.Length && Regex.IsMatch(almanac[lineCounter], patternDecimal))
+        while (lineCounter < almanac.Length && Regex.IsMatch(almanac[lineCounter], _patternDecimal))
         {
             var splittedLine = almanac[lineCounter].Split(' ', StringSplitOptions.RemoveEmptyEntries);
             var destinationRangeStart = long.Parse(splittedLine[0]);
             var sourceRangeStart = long.Parse(splittedLine[1]);
             var range = long.Parse(splittedLine[2]);
-            map.Add(new longMap(destinationRangeStart, sourceRangeStart, range));
+            map.Add(new LongMapWithRange(destinationRangeStart, sourceRangeStart, range));
             lineCounter++;
         }
         return lineCounter + 2;
     }
 
-    private static long GetNextMapValue(long source, List<longMap> map)
+    private static long GetNextMapValue(long source, List<LongMapWithRange> map)
     {
         var x = map.FirstOrDefault(a => a.SourceRangeStart <= source && source <= a.SourceRangeStart + a.Range);
         if (x is null)
