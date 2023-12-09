@@ -6,21 +6,31 @@ internal class LongMapWithRange(long destinationRangeStart, long sourceRangeStar
     public long SourceRangeStart { get; init; } = sourceRangeStart;
     public long Range { get; init; } = range;
 
-    private long MapLong(long source)
+    public SeedRange MapSeedRange(SeedRange source)
     {
-        if (SourceRangeStart <= source && source <= SourceRangeStart + Range)
+        if (source.ToMapNext)
         {
-            return DestinationRangeStart + (source - SourceRangeStart);
-        } else
-        {
-            return source;
+            if (SourceRangeStart <= source.Seed && source.Seed <= SourceRangeStart + Range)
+            {
+                return new SeedRange(DestinationRangeStart + (source.Seed - SourceRangeStart), 0, false);
+            }
         }
+        return source;
     }
-
-    public List<SeedRange> MapSeedRanges(List<SeedRange> seedRanges)
+    public List<SeedRange> MapSeedRangesPart1(List<SeedRange> seedRanges)
     {
         var seedRangeResult = new List<SeedRange>();
-        foreach(SeedRange range in seedRanges)
+        foreach (SeedRange range in seedRanges)
+        {
+            seedRangeResult.Add(MapSeedRange(range));
+        }
+        return seedRangeResult;
+    }
+
+    public List<SeedRange> MapSeedRangesPart2(List<SeedRange> seedRanges)
+    {
+        var seedRangeResult = new List<SeedRange>();
+        foreach (SeedRange range in seedRanges)
         {
             seedRangeResult.AddRange(mapSeedRange(range));
         }

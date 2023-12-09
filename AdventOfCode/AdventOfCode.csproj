@@ -8,25 +8,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="2023\Day1\input.txt">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\InputDay1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Day2\input.txt">
+    <None Update="Resources\InputDay2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Day3\input.txt">
+    <None Update="Resources\InputDay3.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Day4\input.txt">
+    <None Update="Resources\InputDay4.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Day5\input.txt">
+    <None Update="Resources\InputDay5.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Day6\input.txt">
+    <None Update="Resources\InputDay6.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="2023\Day7\input.txt">
+    <None Update="Resources\InputDay7.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

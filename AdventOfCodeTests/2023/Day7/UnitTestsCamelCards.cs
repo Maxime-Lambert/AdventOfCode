@@ -4,7 +4,7 @@ namespace AdventOfCodeTests._2023.Day7;
 public class UnitTestsCamelCards
 {
     [Fact]
-    public void Camel_Cards_Part1_Should_Return_6440()
+    public void CamelCards_Part1_Should_Return_6440()
     {
         //Arrange
         string[] hands = ["32T3K 765",
@@ -21,7 +21,7 @@ public class UnitTestsCamelCards
     }
 
     [Fact]
-    public void Camel_Cards_Part2_Should_Return_5905()
+    public void CamelCards_Part2_Should_Return_5905()
     {
         //Arrange
         string[] hands = ["32T3K 765",
@@ -38,29 +38,8 @@ public class UnitTestsCamelCards
     }
 
     [Fact]
-    public void Camel_Cards_Part2_EdgeCases_Should_Return_5905()
+    public void CamelCards_Part2_EdgeCases_Comparator_Should_Return_5905()
     {
-        // 1 3 2 5 4
-
-        //Arrange
-        string[] hands = ["27A83 765",
-            "Q2KJJ 684",
-            "KK677 28",
-            "AAAAA 220",
-            "99999 483"];
-
-        //Act
-        var result = CamelCards.SolveHandsPart2(hands);
-
-        //Assert
-        result.Should().Be(5905);
-    }
-
-    [Fact]
-    public void Camel_Cards_Part2_EdgeCases_Comparator_Should_Return_5905()
-    {
-        // 1 3 2 5 4
-
         //Arrange
         string[] hands = ["27A83 765",
             "77888 684",
@@ -76,10 +55,8 @@ public class UnitTestsCamelCards
     }
 
     [Fact]
-    public void Camel_Cards_Part2_EdgeCases_Comparator_With_Jokers_Should_Return_5905()
+    public void CamelCards_Part2_EdgeCases_Comparator_With_Jokers_Should_Return_5905()
     {
-        // 1 3 2 5 4
-
         //Arrange
         string[] hands = ["27A8J 765",
             "8877J 684",

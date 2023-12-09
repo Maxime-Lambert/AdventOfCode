@@ -1,21 +1,24 @@
-﻿using System.Reflection.Metadata;
+﻿using AdventOfCode.InputReader;
+using AdventOfCode.ProblemSolvers;
 
 namespace AdventOfCode._2023.Day7;
 
-public static class CamelCards
+public sealed class CamelCards(IReadInputs inputReader) : ProblemSolver(inputReader)
 {
+    private const string INPUT_FILE_NAME = "InputDay7.txt";
+
     private static readonly List<string> _hands = [];
     private static readonly List<int> _bids = [];
     private static readonly PokerCardComparer _pokerComparer = new();
 
-    public static int SolveCamelCardsPart1(string filePath)
+    public override long SolvePart1()
     {
-        return SolveHandsPart1(File.ReadAllLines(Path.GetFullPath(filePath)));
+        return SolveHandsPart1(_inputReader.GetProblemInput(INPUT_FILE_NAME));
     }
 
-    public static int SolveCamelCardsPart2(string filePath)
+    public override long SolvePart2()
     {
-        return SolveHandsPart2(File.ReadAllLines(Path.GetFullPath(filePath)));
+        return SolveHandsPart2(_inputReader.GetProblemInput(INPUT_FILE_NAME));
     }
 
     public static int SolveHandsPart1(string[] inputLines)
@@ -25,7 +28,7 @@ public static class CamelCards
         var result = 0;
         for (int i = 0; i < _hands.Count; i++)
         {
-            result += GetHandRank(_hands[i]) * _bids[i];
+            result += GetHandRankPart1(_hands[i]) * _bids[i];
         }
 
         return result;
@@ -59,7 +62,7 @@ public static class CamelCards
         }
     }
 
-    private static int GetHandRank(string hand)
+    private static int GetHandRankPart1(string hand)
     {
         return _hands.Sum(card => CompareTwoHands(hand, card) ? 1 : 0) + 1;
     }
@@ -73,25 +76,18 @@ public static class CamelCards
     {
         var hand1CardsCount = new Dictionary<char, int>();
         var hand2CardsCount = new Dictionary<char, int>();
-        for (int i = 0; i < hand1.Length; i++)
-        {
-            if (!hand1CardsCount.TryAdd(hand1[i], 1))
-            {
-                hand1CardsCount[hand1[i]] += 1;
-            }
-            if (!hand2CardsCount.TryAdd(hand2[i], 1))
-            {
-                hand2CardsCount[hand2[i]] += 1;
-            }
-        }
-        var hand1Type = GetHandType(hand1CardsCount);
-        var hand2Type = GetHandType(hand2CardsCount);
+
+        ExtractCardsCount(hand1, hand2, hand1CardsCount, hand2CardsCount);
+
+        var hand1Type = GetHandTypePart1(hand1CardsCount);
+        var hand2Type = GetHandTypePart1(hand2CardsCount);
+
 
         if (Enum.Equals(hand1Type, hand2Type))
         {
             for (int i = 0; i < hand1.Length; i++)
             {
-                var charComparison = _pokerComparer.Compare(hand1[i], hand2[i]);
+                var charComparison = _pokerComparer.ComparePart1(hand1[i], hand2[i]);
                 if (charComparison > 0) return true;
                 if (charComparison < 0) return false;
             }
@@ -102,10 +98,9 @@ public static class CamelCards
         }
         return false;
     }
-    private static bool CompareTwoHandsPart2(string hand1, string hand2)
+
+    private static void ExtractCardsCount(string hand1, string hand2, Dictionary<char, int> hand1CardsCount, Dictionary<char, int> hand2CardsCount)
     {
-        var hand1CardsCount = new Dictionary<char, int>();
-        var hand2CardsCount = new Dictionary<char, int>();
         for (int i = 0; i < hand1.Length; i++)
         {
             if (!hand1CardsCount.TryAdd(hand1[i], 1))
@@ -117,6 +112,15 @@ public static class CamelCards
                 hand2CardsCount[hand2[i]] += 1;
             }
         }
+    }
+
+    private static bool CompareTwoHandsPart2(string hand1, string hand2)
+    {
+        var hand1CardsCount = new Dictionary<char, int>();
+        var hand2CardsCount = new Dictionary<char, int>();
+
+        ExtractCardsCount(hand1, hand2, hand1CardsCount, hand2CardsCount);
+
         var hand1Type = GetHandTypePart2(hand1CardsCount);
         var hand2Type = GetHandTypePart2(hand2CardsCount);
 
@@ -136,7 +140,7 @@ public static class CamelCards
         return false;
     }
 
-    private static HandTypes GetHandType(Dictionary<char, int> cardsCount)
+    private static HandTypes GetHandTypePart1(Dictionary<char, int> cardsCount)
     {
         if (cardsCount.Count == 5)
         {
@@ -169,12 +173,12 @@ public static class CamelCards
             }
         }
         return HandTypes.FiveOfAKind;
-    }    
-    
+    }
+
     private static HandTypes GetHandTypePart2(Dictionary<char, int> cardsCount)
     {
         var numberOfJokers = cardsCount.GetValueOrDefault('J');
-        if(numberOfJokers == 5)
+        if (numberOfJokers == 5)
         {
             return HandTypes.FiveOfAKind;
         }

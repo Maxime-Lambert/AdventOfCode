@@ -4,20 +4,20 @@ namespace AdventOfCode._2023.Day3;
 
 internal class PossiblePartNumber
 {
-    public int Number { get; set; }
+    public int Number { get; init; }
 
-    public List<Point> PossibleSymbolValues { get; set; }
+    public List<Point> PossibleSymbolValues { get; init; }
 
-    public PossiblePartNumber(string number, Point startingPosition)
+    public PossiblePartNumber(string partNumber, Point startingPosition)
     {
-        Number = int.Parse(number);
+        Number = int.Parse(partNumber);
         PossibleSymbolValues = [];
-        for (int x = startingPosition.X - 1; x <= startingPosition.X + number.Length; x++)
+        for (int x = startingPosition.X - 1; x <= startingPosition.X + partNumber.Length; x++)
         {
             PossibleSymbolValues.Add(new Point(x, startingPosition.Y - 1));
             PossibleSymbolValues.Add(new Point(x, startingPosition.Y + 1));
         }
         PossibleSymbolValues.Add(new Point(startingPosition.X - 1, startingPosition.Y));
-        PossibleSymbolValues.Add(new Point(startingPosition.X + number.Length, startingPosition.Y));
+        PossibleSymbolValues.Add(new Point(startingPosition.X + partNumber.Length, startingPosition.Y));
     }
 }

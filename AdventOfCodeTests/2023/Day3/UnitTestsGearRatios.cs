@@ -2,10 +2,10 @@
 
 namespace AdventOfCodeTests._2023.Day3;
 
-public class UnitTestsEngineChecker
+public class UnitTestsGearRatios
 {
     [Fact]
-    public void EngineChecker_Part1_Should_Return_4361()
+    public void GearRatios_Part1_Should_Return_4361()
     {
         //Arrange
         string[] engineSchematic = ["467..114..",
@@ -20,14 +20,14 @@ public class UnitTestsEngineChecker
             ".664.598.."];
 
         //Act
-        var result = EngineChecker.SumEngineValidParts(engineSchematic);
+        var result = GearRatios.SumValidEngineParts(engineSchematic);
 
         //Assert
         result.Should().Be(4361);
     }
 
     [Fact]
-    public void EngineChecker_Part1_EdgeNumbers_Should_Return_4361()
+    public void GearRatios_Part1_EdgeNumbers_Should_Return_4361()
     {
         //Arrange
         string[] engineSchematic = [".....114..",
@@ -42,14 +42,14 @@ public class UnitTestsEngineChecker
             ".664.598.."];
 
         //Act
-        var result = EngineChecker.SumEngineValidParts(engineSchematic);
+        var result = GearRatios.SumValidEngineParts(engineSchematic);
 
         //Assert
         result.Should().Be(4361);
     }
 
     [Fact]
-    public void EngineChecker_Part2_Should_Return_467835()
+    public void GearRatios_Part2_Should_Return_467835()
     {
         //Arrange
         string[] engineSchematic = ["467..114..",
@@ -64,14 +64,14 @@ public class UnitTestsEngineChecker
             ".664.598.."];
 
         //Act
-        var result = EngineChecker.SumGearRatios(engineSchematic);
+        var result = GearRatios.SumGearRatios(engineSchematic);
 
         //Assert
         result.Should().Be(467835);
     }
 
     [Fact]
-    public void EngineChecker_Part2_EdgeGear_Should_Return_467835()
+    public void GearRatios_Part2_EdgeGear_Should_Return_467835()
     {
         //Arrange
         string[] engineSchematic = ["467..114..",
@@ -86,14 +86,14 @@ public class UnitTestsEngineChecker
             ".664.598.."];
 
         //Act
-        var result = EngineChecker.SumGearRatios(engineSchematic);
+        var result = GearRatios.SumGearRatios(engineSchematic);
 
         //Assert
         result.Should().Be(467835);
     }
 
     [Fact]
-    public void EngineChecker_Part2_3Numbers_Should_Return_451490()
+    public void GearRatios_Part2_3Numbers_Should_Return_451490()
     {
         //Arrange
         string[] engineSchematic = ["467..114..",
@@ -108,14 +108,14 @@ public class UnitTestsEngineChecker
             ".664.598.."];
 
         //Act
-        var result = EngineChecker.SumGearRatios(engineSchematic);
+        var result = GearRatios.SumGearRatios(engineSchematic);
 
         //Assert
         result.Should().Be(451490);
     }
 
     [Fact]
-    public void EngineChecker_Part2_EdgeCases_Should_Return_451490()
+    public void GearRatios_Part2_EdgeCases_Should_Return_451490()
     {
         //Arrange
         string[] engineSchematic = ["1*1......1",
@@ -130,7 +130,7 @@ public class UnitTestsEngineChecker
             ".........."];
 
         //Act
-        var result = EngineChecker.SumGearRatios(engineSchematic);
+        var result = GearRatios.SumGearRatios(engineSchematic);
 
         //Assert
         result.Should().Be(228);

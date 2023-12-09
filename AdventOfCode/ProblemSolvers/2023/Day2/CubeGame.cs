@@ -13,7 +13,7 @@ internal class CubeGame
         GreenMinimumValue = 0;
     }
 
-    public int GetPowerOfValues()
+    public int GetProductOfColorValues()
     {
         return BlueMinimumValue * RedMinimumValue * GreenMinimumValue;
     }

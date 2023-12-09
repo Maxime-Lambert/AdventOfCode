@@ -3,7 +3,7 @@
 namespace AdventOfCode._2023.Day3;
 internal class PossibleGear
 {
-    public List<Point> PossibleNumberPositions { get; set; }
+    public List<Point> PossibleNumberPositions { get; init; }
 
     public PossibleGear(Point startingPosition, Point boundPoint)
     {

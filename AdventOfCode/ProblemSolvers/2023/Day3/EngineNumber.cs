@@ -4,9 +4,9 @@ namespace AdventOfCode._2023.Day3;
 
 internal class EngineNumber
 {
-    public int Number { get; set; }
+    public int Number { get; init; }
 
-    public List<Point> DigitsPosition { get; set; }
+    public List<Point> DigitsPosition { get; init; }
 
     public EngineNumber(string number, Point startingPosition)
     {

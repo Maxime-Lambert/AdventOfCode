@@ -1,14 +1,8 @@
 ﻿namespace AdventOfCode._2023.Day7;
 
-internal class PokerCardComparer : IComparer<char>
+internal class PokerCardComparer()
 {
-
-    public PokerCardComparer()
-    {
-
-    }
-
-    public int Compare(char x, char y)
+    public int ComparePart1(char x, char y)
     {
         if (x == y) return 0;
 

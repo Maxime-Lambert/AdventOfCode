@@ -1,10 +1,11 @@
 ﻿using AdventOfCode._2023.Day5;
 
 namespace AdventOfCodeTests._2023.Day5;
-public class UnitTestsSeedLocationFinder
+
+public class UnitTestsIfYouGiveASeedAFertilizer
 {
     [Fact]
-    public void Location_Part1_Should_Be_35()
+    public void IfYouGiveASeedAFertilizer_Part1_Should_Be_35()
     {
         //Arrange
         string[] almanac = ["seeds: 79 14 55 13",
@@ -41,14 +42,14 @@ public class UnitTestsSeedLocationFinder
             "60 56 37",
             "56 93 4"];
         //Act
-        var result = SeedLocationFinder.GetLowestLocationPart1(almanac);
+        var result = IfYouGiveASeedAFertilizer.GetLowestLocationPart1(almanac);
 
         //Assert
         result.Should().Be(35);
     }
 
     [Fact]
-    public void Location_Part2_Should_Be_46()
+    public void IfYouGiveASeedAFertilizer_Part2_Should_Be_46()
     {
         //Arrange
         string[] almanac = ["seeds: 79 14 55 13",
@@ -85,7 +86,7 @@ public class UnitTestsSeedLocationFinder
             "60 56 37",
             "56 93 4"];
         //Act
-        var result = SeedLocationFinder.GetLowestLocationPart2(almanac);
+        var result = IfYouGiveASeedAFertilizer.GetLowestLocationPart2(almanac);
 
         //Assert
         result.Should().Be(46);
