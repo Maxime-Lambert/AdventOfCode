@@ -67,5 +67,5 @@ Console.WriteLine("");
 var mirageMaintenance = new MirageMaintenance(inputReader);
 Console.WriteLine("Advent of Code - Day 9");
 Console.WriteLine("Part 1 sum of extrapolated values : " + mirageMaintenance.SolvePart1());
-Console.WriteLine("Part 2 : " + mirageMaintenance.SolvePart2());
+Console.WriteLine("Part 2 sum of extrapolated values : " + mirageMaintenance.SolvePart2());
 Console.WriteLine("");

@@ -42,4 +42,17 @@ public class UnitTestsMirageMaintenance
         //Assert
         result.Should().Be(68);
     }
+
+    [Fact]
+    public void MirageMaintenance_History3_Should_Return_5()
+    {
+        //Arrange
+        const string history = "10  13  16  21  30  45";
+
+        //Act
+        var result = MirageMaintenance.GetExtrapolatedValuePart2(history);
+
+        //Assert
+        result.Should().Be(5);
+    }
 }
