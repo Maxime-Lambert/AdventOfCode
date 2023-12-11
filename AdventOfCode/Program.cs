@@ -60,6 +60,6 @@ Console.WriteLine("");
 
 var hauntedWasteland = new HauntedWasteland(inputReader);
 Console.WriteLine("Advent of Code - Day 8");
-Console.WriteLine("Part 1 sum of winnings : " + hauntedWasteland.SolvePart1());
-Console.WriteLine("Part 2 sum of winnings : " + hauntedWasteland.SolvePart2());
+Console.WriteLine("Part 1 steps to reach ZZZ : " + hauntedWasteland.SolvePart1());
+Console.WriteLine("Part 2 steps to reach Zs simultaneously : " + hauntedWasteland.SolvePart2());
 Console.WriteLine("");

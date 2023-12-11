@@ -15,7 +15,7 @@ public class HauntedWasteland(IReadInputs inputReader) : ProblemSolver(inputRead
 
     public override long SolvePart2()
     {
-        return 0;
+        return CalculateStepsToReachZSimultaneously(_inputReader.GetProblemInput(INPUT_FILE_NAME));
     }
 
     public static int CalculateStepsToReachZZZ(string[] network)
@@ -38,6 +38,53 @@ public class HauntedWasteland(IReadInputs inputReader) : ProblemSolver(inputRead
             steps++;
         }
         return steps;
+    }
+
+    public static long CalculateStepsToReachZSimultaneously(string[] network)
+    {
+        var nodesMap = ExtractNodesMap(network);
+        var pathToFollow = network[0];
+        var steps = 0;
+
+        var currentPositions = nodesMap.Keys.Where(node => node.EndsWith('A')).ToList();
+        var loopSteps = new Dictionary<string, long>();
+
+        while (loopSteps.Count != currentPositions.Count())
+        {
+            if (pathToFollow[steps % network[0].Length] == 'R')
+            {
+                currentPositions = currentPositions.Select(position => nodesMap[position].RightDirection).ToList();
+            }
+            else
+            {
+                currentPositions = currentPositions.Select(position => nodesMap[position].LeftDirection).ToList();
+            }
+            steps++;
+            foreach (var currentPosition in currentPositions)
+            {
+                if (currentPosition.EndsWith('Z') && !loopSteps.ContainsKey(currentPosition))
+                {
+                    loopSteps.Add(currentPosition, steps);
+                }
+            }
+        }
+        return loopSteps.Values.Aggregate((a, b) => GetLowestCommonMultiple(a, b));
+    }
+
+    private static long GetGreatestCommonFactor(long a, long b)
+    {
+        while (b != 0)
+        {
+            var temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    private static long GetLowestCommonMultiple(long a, long b)
+    {
+        return (a / GetGreatestCommonFactor(a, b)) * b;
     }
 
     private static Dictionary<string, Directions> ExtractNodesMap(string[] network)
