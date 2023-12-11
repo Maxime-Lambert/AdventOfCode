@@ -7,6 +7,7 @@ using AdventOfCode._2023.Day6;
 using AdventOfCode._2023.Day7;
 using AdventOfCode.InputReader;
 using AdventOfCode.ProblemSolvers._2023.Day8;
+using AdventOfCode.ProblemSolvers._2023.Day9;
 using Microsoft.Extensions.DependencyInjection;
 
 var serviceProvider = new ServiceCollection()
@@ -57,9 +58,14 @@ Console.WriteLine("Part 1 sum of winnings : " + camelCards.SolvePart1());
 Console.WriteLine("Part 2 sum of winnings : " + camelCards.SolvePart2());
 Console.WriteLine("");
 
-
 var hauntedWasteland = new HauntedWasteland(inputReader);
 Console.WriteLine("Advent of Code - Day 8");
 Console.WriteLine("Part 1 steps to reach ZZZ : " + hauntedWasteland.SolvePart1());
 Console.WriteLine("Part 2 steps to reach Zs simultaneously : " + hauntedWasteland.SolvePart2());
+Console.WriteLine("");
+
+var mirageMaintenance = new MirageMaintenance(inputReader);
+Console.WriteLine("Advent of Code - Day 9");
+Console.WriteLine("Part 1 sum of extrapolated values : " + mirageMaintenance.SolvePart1());
+Console.WriteLine("Part 2 : " + mirageMaintenance.SolvePart2());
 Console.WriteLine("");
