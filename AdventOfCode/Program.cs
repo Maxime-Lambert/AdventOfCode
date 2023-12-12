@@ -8,6 +8,7 @@ using AdventOfCode._2023.Day7;
 using AdventOfCode.InputReader;
 using AdventOfCode.ProblemSolvers._2023.Day10;
 using AdventOfCode.ProblemSolvers._2023.Day11;
+using AdventOfCode.ProblemSolvers._2023.Day12;
 using AdventOfCode.ProblemSolvers._2023.Day8;
 using AdventOfCode.ProblemSolvers._2023.Day9;
 using Microsoft.Extensions.DependencyInjection;
@@ -82,4 +83,11 @@ var cosmicExpansion = new CosmicExpansion(inputReader);
 Console.WriteLine("Advent of Code - Day 11");
 Console.WriteLine("Part 1 furthest distance in loop : " + cosmicExpansion.SolvePart1());
 Console.WriteLine("Part 2 furthest distance in loop : " + cosmicExpansion.SolvePart2());
+Console.WriteLine("");
+
+
+var hotSprings = new HotSprings(inputReader);
+Console.WriteLine("Advent of Code - Day 11");
+Console.WriteLine("Part 1 sum of arrangements possible : " + hotSprings.SolvePart1());
+Console.WriteLine("Part 2 : " + hotSprings.SolvePart2());
 Console.WriteLine("");

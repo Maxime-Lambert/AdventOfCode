@@ -19,7 +19,7 @@ public class UnitTestsCosmicExpansion
             "..........",
             ".......#..",
             "#...#....."];
-        
+
         //Act
         var result = CosmicExpansion.GetSumOfShortestPathsBetweenGalaxies(image);
 

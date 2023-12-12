@@ -85,9 +85,9 @@ public sealed class CosmicExpansion(IReadInputs inputReader) : ProblemSolver(inp
     public static List<Point> GetGalaxies(string[] image)
     {
         var galaxyCoordinates = new List<Point>();
-        for(int j = 0; j < image.Length; j++)
+        for (int j = 0; j < image.Length; j++)
         {
-            for(int i = 0; i < image[j].Length; i++) 
+            for (int i = 0; i < image[j].Length; i++)
             {
                 if (image[j][i] == '#')
                 {
