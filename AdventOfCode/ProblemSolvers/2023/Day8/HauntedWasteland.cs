@@ -2,7 +2,7 @@
 
 namespace AdventOfCode.ProblemSolvers._2023.Day8;
 
-public class HauntedWasteland(IReadInputs inputReader) : ProblemSolver(inputReader)
+public sealed class HauntedWasteland(IReadInputs inputReader) : ProblemSolver(inputReader)
 {
     private const string INPUT_FILE_NAME = "InputDay8.txt";
     private const string PART1_STARTING_POSITION = "AAA";

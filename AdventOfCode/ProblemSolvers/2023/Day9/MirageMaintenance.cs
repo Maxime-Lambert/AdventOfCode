@@ -2,7 +2,7 @@
 
 namespace AdventOfCode.ProblemSolvers._2023.Day9;
 
-public class MirageMaintenance(IReadInputs inputReader) : ProblemSolver(inputReader)
+public sealed class MirageMaintenance(IReadInputs inputReader) : ProblemSolver(inputReader)
 {
     private const string INPUT_FILE_NAME = "InputDay9.txt";
 

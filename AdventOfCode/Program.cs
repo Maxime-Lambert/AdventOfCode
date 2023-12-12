@@ -6,6 +6,7 @@ using AdventOfCode._2023.Day5;
 using AdventOfCode._2023.Day6;
 using AdventOfCode._2023.Day7;
 using AdventOfCode.InputReader;
+using AdventOfCode.ProblemSolvers._2023.Day10;
 using AdventOfCode.ProblemSolvers._2023.Day8;
 using AdventOfCode.ProblemSolvers._2023.Day9;
 using Microsoft.Extensions.DependencyInjection;
@@ -68,4 +69,10 @@ var mirageMaintenance = new MirageMaintenance(inputReader);
 Console.WriteLine("Advent of Code - Day 9");
 Console.WriteLine("Part 1 sum of extrapolated values : " + mirageMaintenance.SolvePart1());
 Console.WriteLine("Part 2 sum of extrapolated values : " + mirageMaintenance.SolvePart2());
+Console.WriteLine("");
+
+var pipeMaze = new PipeMaze(inputReader);
+Console.WriteLine("Advent of Code - Day 10");
+Console.WriteLine("Part 1 furthest distance in loop : " + pipeMaze.SolvePart1());
+Console.WriteLine("Part 2 furthest distance in loop : " + pipeMaze.SolvePart2());
 Console.WriteLine("");
