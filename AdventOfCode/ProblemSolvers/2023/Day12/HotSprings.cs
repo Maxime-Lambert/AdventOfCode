@@ -1,10 +1,12 @@
-﻿using AdventOfCode.InputReader;
+﻿using System.Text.RegularExpressions;
+using AdventOfCode.InputReader;
 
 namespace AdventOfCode.ProblemSolvers._2023.Day12;
 
 public sealed class HotSprings(IReadInputs inputReader) : ProblemSolver(inputReader)
 {
     private const string INPUT_FILE_NAME = "InputDay12.txt";
+    private static readonly Dictionary<string, long> _cache = [];
 
     public override long SolvePart1()
     {
@@ -13,60 +15,75 @@ public sealed class HotSprings(IReadInputs inputReader) : ProblemSolver(inputRea
 
     public override long SolvePart2()
     {
-        return 0;
+        return _inputReader.GetProblemInput(INPUT_FILE_NAME).Select(UnfoldLine).Sum(GetPossibleArrangements);
     }
 
-    public static int GetPossibleArrangements(string record)
+    public static string UnfoldLine(string record)
+    {
+        var workingGroups = record.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1];
+        var springRecord = record.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
+        return string.Join('?', Enumerable.Repeat(springRecord, 5)) + ' ' + string.Join(',', Enumerable.Repeat(workingGroups, 5));
+    }
+
+    public static long GetPossibleArrangements(string record)
     {
         var workingGroups = record.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1].Split(',').Select(int.Parse).ToList();
         var springRecord = record.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
-        return GetPossibleArrangementsRecursive(springRecord, workingGroups, 0);
+        if(_cache.TryGetValue(record, out var result))
+        {
+            return result;
+        }
+        _cache.Add(record, GetPossibleArrangementsRecursive(springRecord, workingGroups));
+        return _cache[record];
     }
 
-    private static int GetPossibleArrangementsRecursive(string springRecord, List<int> workingGroups, int workingSpringCounter)
+    private static long GetPossibleArrangementsRecursive(string springRecord, List<int> workingGroups)
     {
-        if (springRecord.Length == 0)
+        while (true)
         {
-            if (IsRecordPossible(workingGroups, workingSpringCounter))
+            if (workingGroups.Count == 0)
             {
-                return 1;
+                return springRecord.Contains('#') ? 0 : 1;
             }
-            else
+
+            if (springRecord.Length == 0)
             {
                 return 0;
             }
+
+            switch (springRecord[0])
+            {
+                case '.': springRecord = springRecord.Trim('.'); continue;
+                case '?': return GetPossibleArrangements('.' + springRecord[1..] + ' ' + string.Join(',', workingGroups))
+                                + GetPossibleArrangements('#' + springRecord[1..] + ' ' + string.Join(',', workingGroups));
+                default:
+                    if (workingGroups.Count == 0)
+                    {
+                        return 0;
+                    }
+                    if (springRecord.Length < workingGroups[0])
+                    {
+                        return 0;
+                    }
+                    if (springRecord[..workingGroups[0]].Contains('.'))
+                    {
+                        return 0;
+                    }
+                    if (workingGroups.Count > 1)
+                    {
+                        if (springRecord.Length < workingGroups[0] + 1 || springRecord[workingGroups[0]] == '#')
+                        {
+                            return 0;
+                        }
+
+                        springRecord = springRecord[(workingGroups[0] + 1)..];
+                        workingGroups = workingGroups[1..];
+                        continue;
+                    }
+                    springRecord = springRecord[workingGroups[0]..];
+                    workingGroups = workingGroups[1..];
+                    continue;
+            }
         }
-        switch (springRecord[0])
-        {
-            case '.':
-                if (IsRecordNotPossibleAnymore(workingGroups, workingSpringCounter))
-                {
-                    return 0;
-                }
-                if (FoundNextWorkingGroup(workingGroups, workingSpringCounter))
-                {
-                    return GetPossibleArrangementsRecursive(springRecord[1..], workingGroups.Skip(1).ToList(), 0);
-                }
-                return GetPossibleArrangementsRecursive(springRecord[1..], workingGroups, 0);
-            case '#': return GetPossibleArrangementsRecursive(springRecord[1..], workingGroups, workingSpringCounter + 1);
-            default:
-                return GetPossibleArrangementsRecursive('.' + springRecord[1..], workingGroups, workingSpringCounter) +
-                             GetPossibleArrangementsRecursive('#' + springRecord[1..], workingGroups, workingSpringCounter);
-        }
-    }
-
-    private static bool FoundNextWorkingGroup(List<int> workingGroups, int workingSpringCounter)
-    {
-        return workingSpringCounter > 0 && workingGroups.Count > 0 && workingSpringCounter == workingGroups[0];
-    }
-
-    private static bool IsRecordNotPossibleAnymore(List<int> workingGroups, int workingSpringCounter)
-    {
-        return (workingSpringCounter > 0 && workingGroups.Count > 0 && workingSpringCounter != workingGroups[0]) || (workingSpringCounter > 0 && workingGroups.Count == 0);
-    }
-
-    private static bool IsRecordPossible(List<int> workingGroups, int workingSpringCounter)
-    {
-        return (workingGroups.Count == 0 && workingSpringCounter == 0) || (workingGroups.Count == 1 && workingGroups[0] == workingSpringCounter);
     }
 }

@@ -81,4 +81,30 @@ public class UnitTestsHotSprings
         //Assert
         result.Should().Be(10);
     }
+
+    [Fact]
+    public void HotSprings_Record0_Should_Be_Unfolded_Right()
+    {
+        //Arrange
+        const string record = ".# 1";
+
+        //Act
+        var result = HotSprings.UnfoldLine(record);
+
+        //Assert
+        result.Should().Be(".#?.#?.#?.#?.# 1,1,1,1,1");
+    }
+
+    [Fact]
+    public void HotSprings_Record1_Should_Be_Unfolded_Right()
+    {
+        //Arrange
+        const string record = "???.### 1,1,3";
+
+        //Act
+        var result = HotSprings.UnfoldLine(record);
+
+        //Assert
+        result.Should().Be("???.###????.###????.###????.###????.### 1,1,3,1,1,3,1,1,3,1,1,3,1,1,3");
+    }
 }

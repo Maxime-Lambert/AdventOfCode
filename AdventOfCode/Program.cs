@@ -85,9 +85,8 @@ Console.WriteLine("Part 1 furthest distance in loop : " + cosmicExpansion.SolveP
 Console.WriteLine("Part 2 furthest distance in loop : " + cosmicExpansion.SolvePart2());
 Console.WriteLine("");
 
-
 var hotSprings = new HotSprings(inputReader);
-Console.WriteLine("Advent of Code - Day 11");
+Console.WriteLine("Advent of Code - Day 12");
 Console.WriteLine("Part 1 sum of arrangements possible : " + hotSprings.SolvePart1());
-Console.WriteLine("Part 2 : " + hotSprings.SolvePart2());
+Console.WriteLine("Part 2 sum of arrangements possible : " + hotSprings.SolvePart2());
 Console.WriteLine("");
