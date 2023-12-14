@@ -10,6 +10,7 @@ using AdventOfCode.ProblemSolvers._2023.Day10;
 using AdventOfCode.ProblemSolvers._2023.Day11;
 using AdventOfCode.ProblemSolvers._2023.Day12;
 using AdventOfCode.ProblemSolvers._2023.Day13;
+using AdventOfCode.ProblemSolvers._2023.Day14;
 using AdventOfCode.ProblemSolvers._2023.Day8;
 using AdventOfCode.ProblemSolvers._2023.Day9;
 using Microsoft.Extensions.DependencyInjection;
@@ -96,4 +97,10 @@ var pointOfIncidence = new PointOfIncidence(inputReader);
 Console.WriteLine("Advent of Code - Day 13");
 Console.WriteLine("Part 1 sum of arrangements possible : " + pointOfIncidence.SolvePart1());
 Console.WriteLine("Part 2 sum of arrangements possible : " + pointOfIncidence.SolvePart2());
+Console.WriteLine("");
+
+var parabolicReflectorDish = new ParabolicReflectorDish(inputReader);
+Console.WriteLine("Advent of Code - Day 14");
+Console.WriteLine("Part 1 sum of loaded rocks : " + parabolicReflectorDish.SolvePart1());
+Console.WriteLine("Part 2 : " + parabolicReflectorDish.SolvePart2());
 Console.WriteLine("");
