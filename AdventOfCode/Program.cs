@@ -9,6 +9,7 @@ using AdventOfCode.InputReader;
 using AdventOfCode.ProblemSolvers._2023.Day10;
 using AdventOfCode.ProblemSolvers._2023.Day11;
 using AdventOfCode.ProblemSolvers._2023.Day12;
+using AdventOfCode.ProblemSolvers._2023.Day13;
 using AdventOfCode.ProblemSolvers._2023.Day8;
 using AdventOfCode.ProblemSolvers._2023.Day9;
 using Microsoft.Extensions.DependencyInjection;
@@ -89,4 +90,10 @@ var hotSprings = new HotSprings(inputReader);
 Console.WriteLine("Advent of Code - Day 12");
 Console.WriteLine("Part 1 sum of arrangements possible : " + hotSprings.SolvePart1());
 Console.WriteLine("Part 2 sum of arrangements possible : " + hotSprings.SolvePart2());
+Console.WriteLine("");
+
+var pointOfIncidence = new PointOfIncidence(inputReader);
+Console.WriteLine("Advent of Code - Day 13");
+Console.WriteLine("Part 1 sum of arrangements possible : " + pointOfIncidence.SolvePart1());
+Console.WriteLine("Part 2 sum of arrangements possible : " + pointOfIncidence.SolvePart2());
 Console.WriteLine("");

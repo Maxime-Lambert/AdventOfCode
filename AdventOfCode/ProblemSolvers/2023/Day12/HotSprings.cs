@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using AdventOfCode.InputReader;
+﻿using AdventOfCode.InputReader;
 
 namespace AdventOfCode.ProblemSolvers._2023.Day12;
 
@@ -29,7 +28,7 @@ public sealed class HotSprings(IReadInputs inputReader) : ProblemSolver(inputRea
     {
         var workingGroups = record.Split(' ', StringSplitOptions.RemoveEmptyEntries)[1].Split(',').Select(int.Parse).ToList();
         var springRecord = record.Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
-        if(_cache.TryGetValue(record, out var result))
+        if (_cache.TryGetValue(record, out var result))
         {
             return result;
         }
@@ -54,7 +53,8 @@ public sealed class HotSprings(IReadInputs inputReader) : ProblemSolver(inputRea
             switch (springRecord[0])
             {
                 case '.': springRecord = springRecord.Trim('.'); continue;
-                case '?': return GetPossibleArrangements('.' + springRecord[1..] + ' ' + string.Join(',', workingGroups))
+                case '?':
+                    return GetPossibleArrangements('.' + springRecord[1..] + ' ' + string.Join(',', workingGroups))
                                 + GetPossibleArrangements('#' + springRecord[1..] + ' ' + string.Join(',', workingGroups));
                 default:
                     if (workingGroups.Count == 0)
