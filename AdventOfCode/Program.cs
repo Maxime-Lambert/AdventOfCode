@@ -102,5 +102,5 @@ Console.WriteLine("");
 var parabolicReflectorDish = new ParabolicReflectorDish(inputReader);
 Console.WriteLine("Advent of Code - Day 14");
 Console.WriteLine("Part 1 sum of loaded rocks : " + parabolicReflectorDish.SolvePart1());
-Console.WriteLine("Part 2 : " + parabolicReflectorDish.SolvePart2());
+Console.WriteLine("Part 2 sum of loaded rocks : " + parabolicReflectorDish.SolvePart2());
 Console.WriteLine("");
