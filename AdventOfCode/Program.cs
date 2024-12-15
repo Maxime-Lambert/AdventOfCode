@@ -14,6 +14,13 @@ using AdventOfCode.ProblemSolvers._2023.Day14;
 using AdventOfCode.ProblemSolvers._2023.Day15;
 using AdventOfCode.ProblemSolvers._2023.Day8;
 using AdventOfCode.ProblemSolvers._2023.Day9;
+using AdventOfCode.ProblemSolvers._2024.Day1;
+using AdventOfCode.ProblemSolvers._2024.Day2;
+using AdventOfCode.ProblemSolvers._2024.Day3;
+using AdventOfCode.ProblemSolvers._2024.Day4;
+using AdventOfCode.ProblemSolvers._2024.Day5;
+using AdventOfCode.ProblemSolvers._2024.Day6;
+using AdventOfCode.ProblemSolvers._2024.Day7;
 using Microsoft.Extensions.DependencyInjection;
 
 var serviceProvider = new ServiceCollection()
@@ -110,4 +117,46 @@ var lensLibrary = new LensLibrary(inputReader);
 Console.WriteLine("Advent of Code - Day 15");
 Console.WriteLine("Part 1 sum of hashes : " + lensLibrary.SolvePart1());
 Console.WriteLine("Part 2 sum of hashes : " + lensLibrary.SolvePart2());
+Console.WriteLine("");
+
+var historianHysteria = new HistorianHysteria(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 1");
+Console.WriteLine("Part 1 sum of total distance : " + historianHysteria.SolvePart1());
+Console.WriteLine("Part 2 sum of simlarity score : " + historianHysteria.SolvePart2());
+Console.WriteLine("");
+
+var redNosedReports = new RedNosedReports(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 2");
+Console.WriteLine("Part 1 sum of safe reports : " + redNosedReports.SolvePart1());
+Console.WriteLine("Part 2 sum of simlarity score : " + redNosedReports.SolvePart2());
+Console.WriteLine("");
+
+var mullItOver = new MullItOver(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 3");
+Console.WriteLine("Part 1 sum of uncorrupted muls : " + mullItOver.SolvePart1());
+Console.WriteLine("Part 2 sum of simlarity score : " + mullItOver.SolvePart2());
+Console.WriteLine("");
+
+var ceresSearch = new CeresSearch(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 4");
+Console.WriteLine("Part 1 sum of xmas found : " + ceresSearch.SolvePart1());
+Console.WriteLine("Part 2 sum of cross MAS: " + ceresSearch.SolvePart2());
+Console.WriteLine("");
+
+var printQueue = new PrintQueue(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 5");
+Console.WriteLine("Part 1 sum of middle validated page updates : " + printQueue.SolvePart1());
+Console.WriteLine("Part 2 sum of cross MAS: " + printQueue.SolvePart2());
+Console.WriteLine("");
+
+var guardGallavant = new GuardGallivant(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 6");
+Console.WriteLine("Part 1 number of cases patrolled : " + guardGallavant.SolvePart1());
+Console.WriteLine("Part 2 sum of cross MAS: " + guardGallavant.SolvePart2());
+Console.WriteLine("");
+
+var bridgeRepair = new BridgeRepair(inputReader);
+Console.WriteLine("Advent of Code 2024 - Day 7");
+Console.WriteLine("Part 1 number of possible equations : " + bridgeRepair.SolvePart1());
+Console.WriteLine("Part 2 sum of cross MAS: " + bridgeRepair.SolvePart2());
 Console.WriteLine("");

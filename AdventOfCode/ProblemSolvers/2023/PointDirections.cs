@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace AdventOfCode.ProblemSolvers._2023.Day10;
+namespace AdventOfCode.ProblemSolvers._2023;
 
 internal static class PointDirections
 {

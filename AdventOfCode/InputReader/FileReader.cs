@@ -6,6 +6,6 @@ public class FileReader : IReadInputs
 
     public string[] GetProblemInput(string fileName)
     {
-        return File.ReadAllLines(Path.GetFullPath(PATH_TO_RESOURCES + fileName));
+        return File.ReadAllLines(Path.Combine(PATH_TO_RESOURCES, fileName));
     }
 }
